@@ -1,0 +1,77 @@
+<div class="container">
+  <mat-toolbar class="toolbar">
+    <mat-toolbar-row class="first-row">
+      <span>Angular lecture 1</span>
+    </mat-toolbar-row>
+
+    <mat-toolbar-row class="second-row">
+      <button class="select-button" mat-button (click)="checkAllCards()">
+        Select all
+      </button>
+      <button
+        class="delete-button"
+        mat-button
+        [disabled]="buttonState()"
+        (click)="deleteChecked()"
+      >
+        Delete
+      </button>
+
+      <mat-form-field class="sort-field">
+        <mat-label class="sort-label">Sort by</mat-label>
+        <mat-select class="sort-option" [(ngModel)]="sortField">
+          <mat-option value="firstname">First name</mat-option>
+          <mat-option value="lastname">Last name</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button mat-button (click)="onSortDirection()">
+        <i class="sort-button-option" *ngIf="sortDirection === 'asc'"
+          ><span>A-Z</span><mat-icon>expand_more</mat-icon></i
+        >
+        <i class="sort-button-option" *ngIf="sortDirection === 'desc'"
+          ><span>Z-A</span><mat-icon>expand_less</mat-icon></i
+        >
+      </button>
+
+      <span class="spacer"></span>
+      <mat-form-field class="search-field" appearance="outline">
+        <input
+          class="search-input"
+          matInput
+          placeholder="Search users"
+          [(ngModel)]="searchTerm"
+        />
+      </mat-form-field>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <div class="content">
+    <div fxLayout="row wrap" fxLayoutGap="16px">
+      <div
+        fxFlex="20%"
+        *ngFor="
+          let item of users
+            | filter: searchTerm
+            | sort: [sortField, sortDirection]
+        "
+      >
+        <mat-card class="card">
+          <mat-checkbox
+            class="card-checkbox"
+            [(ngModel)]="item.checked"
+          ></mat-checkbox>
+          <img
+            mat-card-image
+            src="https://www.pngmart.com/files/12/Corgi-Download-PNG-Image.png"
+            alt="Cute dog"
+          />
+          <mat-card-content>
+            <p>{{ item.firstname }} {{ item.lastname }}</p>
+            <p>{{ item.email }}</p>
+            <p>{{ item.phone }}</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>
