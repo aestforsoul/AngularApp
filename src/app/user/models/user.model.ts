@@ -1,8 +1,7 @@
 export interface User {
   id: number;
-  firstname: string;
-  lastname: string;
+  name: string;
   email: string;
   phone: string;
-  checked: boolean;
+  checked?: boolean;
 }

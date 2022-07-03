@@ -1,0 +1,40 @@
+.container {
+  padding: 0 0 20px 20px;
+}
+
+.form-container {
+  width: 20%;
+  border: 1px solid #c9c9c9;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.form-row {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  font-size: 14px;
+}
+
+.form-input {
+  height: 32px;
+  font-size: 14px;
+  margin-left: 5px;
+}
+
+.text-error {
+  color: #fc1303;
+  font-size: 12px;
+}
+
+.submit-button {
+  width: 100%;
+  height: 48px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #4287f5;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

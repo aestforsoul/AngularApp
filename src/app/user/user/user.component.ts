@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../user.model';
-import { UserService } from '../user.service';
+import { User } from 'src/app/user/models/user.model';
+import { UserService } from 'src/app/user/services/user.service';
 
 @Component({
   selector: 'app-user',
@@ -16,10 +16,12 @@ export class UserComponent implements OnInit {
   constructor(private userService: UserService) {}
 
   ngOnInit(): void {
-    this.users = this.userService.getAll();
+    this.userService.getAll().subscribe((users) => {
+      this.users = users;
+    });
   }
 
-  checkAllCards() {
+  onCheckAllCards() {
     if (this.users.every((val) => val.checked == true))
       this.users.forEach((val) => {
         val.checked = false;
@@ -30,12 +32,18 @@ export class UserComponent implements OnInit {
       });
   }
 
-  buttonState() {
+  deleteButtonState() {
     return !this.users.some((val) => val.checked);
   }
 
-  deleteChecked() {
-    this.users = this.users.filter((val) => val.checked === false);
+  onDeleteChecked() {
+    this.users = this.users.filter((val) => !val.checked);
+
+    this.users.forEach((val) => {
+      if (val.checked) {
+        this.userService.deleteUser(val).subscribe();
+      }
+    });
   }
 
   onSortDirection() {
@@ -44,5 +52,11 @@ export class UserComponent implements OnInit {
     } else {
       this.sortDirection = 'desc';
     }
+  }
+
+  addUser(user: User) {
+    this.userService.addUser(user).subscribe((newUser) => {
+      this.users = [...this.users, newUser];
+    });
   }
 }

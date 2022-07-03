@@ -1,0 +1,94 @@
+<div class="container">
+  <div class="form-container">
+    <h2 class="form-title">Add new user</h2>
+    <form [formGroup]="newUserForm" (ngSubmit)="onSubmit()" class="user-form">
+      <div class="form-row">
+        <label class="form-label">
+          First name:
+          <input
+            formControlName="firstname"
+            placeholder="Alina"
+            class="form-input"
+          />
+        </label>
+        <div
+          class="text-error"
+          *ngIf="
+            newUserForm.get('firstname')!.invalid &&
+            (newUserForm.get('firstname')!.dirty ||
+              newUserForm.get('firstname')!.touched)
+          "
+        >
+          Please provide a first name.
+        </div>
+      </div>
+      <div class="form-row">
+        <label class="form-label">
+          Last name:
+          <input
+            formControlName="lastname"
+            placeholder="Lishchynska"
+            class="form-input"
+          />
+        </label>
+        <div
+          class="text-error"
+          *ngIf="
+            newUserForm.get('lastname')!.invalid &&
+            (newUserForm.get('lastname')!.dirty ||
+              newUserForm.get('lastname')!.touched)
+          "
+        >
+          Please provide a last name.
+        </div>
+      </div>
+      <div class="form-row">
+        <label class="form-label">
+          Email:
+          <input
+            formControlName="email"
+            placeholder="name@gmail.com"
+            class="form-input"
+          />
+        </label>
+        <div
+          class="text-error"
+          *ngIf="
+            newUserForm.get('email')!.invalid &&
+            (newUserForm.get('email')!.dirty ||
+              newUserForm.get('email')!.touched)
+          "
+        >
+          Please provide a valid email.
+        </div>
+      </div>
+      <div class="form-row">
+        <label class="form-label">
+          Phone:
+          <input
+            formControlName="phone"
+            placeholder="0933333333"
+            class="form-input"
+          />
+        </label>
+        <div
+          class="text-error"
+          *ngIf="
+            newUserForm.get('phone')!.invalid &&
+            (newUserForm.get('phone')!.dirty ||
+              newUserForm.get('phone')!.touched)
+          "
+        >
+          Please provide a valid phone.
+        </div>
+      </div>
+      <button
+        type="submit"
+        class="submit-button"
+        [disabled]="newUserForm.invalid"
+      >
+        Send
+      </button>
+    </form>
+  </div>
+</div>

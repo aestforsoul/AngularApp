@@ -2,31 +2,25 @@
   background-color: white;
 }
 
+.title {
+  margin-left: 15px;
+}
+
 .second-row {
   height: 80px;
   border-bottom: 1px solid #c9c9c9;
 }
 
-.search-field {
-  width: 150px;
-  font-size: 14px;
-}
-
-.sort-label,
-.sort-option {
-  font-size: 14px;
-}
-
-.sort-field {
-  width: 120px;
-  margin-left: 12px;
-  color: #4287f5;
-  font-weight: 500;
-}
-
 .select-button,
-.delete-button {
+.delete-button,
+.search-field {
   color: #4287f5;
+}
+
+.sort-label {
+  font-size: 14px;
+  font-weight: 400;
+  margin-left: 15px;
 }
 
 .sort-button-option {
@@ -40,11 +34,7 @@
   flex: 1 1 auto;
 }
 
-.content {
-  margin: 16px;
-}
-
-.card-checkbox {
-  float: right;
-  margin: 10px 0;
+.search-field {
+  width: 150px;
+  font-size: 14px;
 }

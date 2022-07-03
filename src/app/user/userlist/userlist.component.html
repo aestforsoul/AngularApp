@@ -1,0 +1,25 @@
+<div class="content">
+  <div fxLayout="row wrap">
+    <div
+      fxFlex="20%"
+      *ngFor="let item of users | filter: searchTerm | sort: sortDirection"
+    >
+      <mat-card class="card">
+        <mat-checkbox
+          class="card-checkbox"
+          [(ngModel)]="item.checked"
+        ></mat-checkbox>
+        <img
+          mat-card-image
+          src="https://www.pngmart.com/files/12/Corgi-Download-PNG-Image.png"
+          alt="Cute dog"
+        />
+        <mat-card-content>
+          <p>{{ item.name }}</p>
+          <p>{{ item.email }}</p>
+          <p>{{ item.phone }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

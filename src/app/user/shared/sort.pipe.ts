@@ -1,13 +1,11 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { User } from '../user.model';
+import { User } from '../models/user.model';
 
 @Pipe({
   name: 'sort',
 })
 export class SortPipe implements PipeTransform {
-  transform(value: User[], args: any[]): any {
-    const sortField = args[0];
-    const sortDirection = args[1];
+  transform(value: User[], sortDirection: string): any {
     let multiplier = 1;
 
     if (sortDirection === 'desc') {
@@ -15,9 +13,9 @@ export class SortPipe implements PipeTransform {
     }
 
     value.sort((a: any, b: any) => {
-      if (a[sortField] < b[sortField]) {
+      if (a.name < b.name) {
         return -1 * multiplier;
-      } else if (a[sortField] > b[sortField]) {
+      } else if (a.name > b.name) {
         return 1 * multiplier;
       } else {
         return 0;
